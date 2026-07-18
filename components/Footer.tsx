@@ -50,7 +50,7 @@ export default function Footer() {
 
         <div className="flex items-start md:justify-end">
           <Image
-            src="/img/logo/logo-fns.jpeg"
+            src="/img/logo/logo-fns.png"
             alt="Faculty of Natural Sciences"
             width={72}
             height={72}

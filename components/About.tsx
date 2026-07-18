@@ -44,7 +44,7 @@ export default function About() {
             <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-[var(--color-accent)]/30 to-[var(--color-accent-3)]/30 blur-2xl" />
             <div className="glass relative flex h-full items-center justify-center rounded-[2rem] p-10">
               <Image
-                src="/img/logo/logo-fns.jpeg"
+                src="/img/logo/logo-fns.png"
                 alt="Faculty of Natural Sciences"
                 width={320}
                 height={320}
