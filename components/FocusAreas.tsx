@@ -1,6 +1,7 @@
 "use client";
 
 import { Cpu, Code, BarChart3, Palette, Video, type LucideIcon } from "lucide-react";
+import { useReducedMotion } from "framer-motion";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { useLanguage } from "@/lib/LanguageContext";
 
@@ -14,14 +15,27 @@ const ICONS: Record<string, LucideIcon> = {
 
 export default function FocusAreas() {
   const { t } = useLanguage();
+  const reduce = useReducedMotion();
 
   return (
-    <section id="focus" className="relative py-24 sm:py-32">
+    <section id="focus" className="relative overflow-hidden py-24 sm:py-32">
+      {/* Ambient background video */}
+      <div className="absolute inset-0 -z-10">
+        <video
+          src="/video/backgroup-What we do.mp4"
+          autoPlay={!reduce}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="h-full w-full object-cover opacity-15"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bg)] via-[var(--color-bg)]/90 to-[var(--color-bg)]" />
+      </div>
+
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-[var(--color-accent)]">
-            {t.focus.tag}
-          </span>
+          <span className="eyebrow">{t.focus.tag}</span>
           <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             {t.focus.title}
           </h2>
@@ -36,7 +50,7 @@ export default function FocusAreas() {
             const Icon = ICONS[item.icon] ?? Cpu;
             return (
               <RevealItem key={item.title}>
-                <div className="group relative h-full overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--color-accent)]/60">
+                <div className="liquid-glass group relative h-full overflow-hidden rounded-2xl p-7 transition-transform duration-300 hover:-translate-y-1.5">
                   {/* hover glow */}
                   <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[var(--color-accent-2)]/20 opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-100" />
 

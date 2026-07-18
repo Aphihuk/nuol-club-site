@@ -1,0 +1,3 @@
+ສາຂາ ການພັດທະນາເວັບໄຊ(cw):https://www.tiktok.com/@nuolmaker_cs/video/7660453658022235400?is_from_webapp=1&sender_device=pc&web_id=7663696170666231313
+ມາຮູ້ຈັກກັບ ສາຂາ ການພັດທະນາໂປຮແກຮມ💻(CPR)ນຳກັນ:https://www.tiktok.com/@nuolmaker_cs/video/7660459484032126215?is_from_webapp=1&sender_device=pc&web_id=7663696170666231313
+ສາຂາວິທະຍາສາດຄອມພິວເຕີ: https://www.tiktok.com/@nuolmaker_cs/video/7660449584497298695?is_from_webapp=1&sender_device=pc&web_id=7663696170666231313

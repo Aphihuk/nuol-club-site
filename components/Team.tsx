@@ -11,9 +11,7 @@ export default function Team() {
     <section id="team" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-[var(--color-accent)]">
-            {t.team.tag}
-          </span>
+          <span className="eyebrow">{t.team.tag}</span>
           <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             {t.team.title}
           </h2>
@@ -26,7 +24,7 @@ export default function Team() {
         >
           {t.team.members.map((m) => (
             <RevealItem key={m.role}>
-              <div className="group relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50">
+              <div className="liquid-glass group relative overflow-hidden rounded-2xl">
                 <div className="relative aspect-[3/4] overflow-hidden">
                   <Image
                     src={m.img}

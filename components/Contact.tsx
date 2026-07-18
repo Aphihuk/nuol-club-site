@@ -30,10 +30,7 @@ export default function Contact() {
       <div className="mx-auto max-w-5xl px-5 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-2">
           <Reveal direction="right">
-            <span className="text-sm font-semibold uppercase tracking-widest text-[var(--color-accent)]">
-              {t.contact.tag}
-            </span>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
               {t.contact.title}
             </h2>
             <p className="mt-4 text-[var(--color-muted)]">{t.contact.subtitle}</p>
@@ -56,7 +53,7 @@ export default function Contact() {
           </Reveal>
 
           <Reveal direction="left">
-            <form onSubmit={handleSubmit} className="glass space-y-4 rounded-2xl p-6 sm:p-8">
+            <form onSubmit={handleSubmit} className="liquid-glass space-y-4 rounded-2xl p-6 sm:p-8">
               <input
                 required
                 type="text"

@@ -22,8 +22,28 @@ export interface Stat {
   label: string;
 }
 
+export interface ShowcaseItem {
+  type: "image" | "video";
+  src: string;
+  title: string;
+  link?: string; // external link (e.g. TikTok) for videos
+}
+
+export interface ShowcaseGroup {
+  key: string;
+  label: string; // tab label
+  items: ShowcaseItem[];
+}
+
 export interface Dictionary {
-  nav: { about: string; focus: string; team: string; contact: string; cta: string };
+  nav: {
+    about: string;
+    focus: string;
+    performance: string;
+    team: string;
+    contact: string;
+    cta: string;
+  };
   hero: {
     badge: string;
     titleLead: string;
@@ -41,6 +61,12 @@ export interface Dictionary {
   };
   focus: { tag: string; title: string; subtitle: string; items: FocusArea[] };
   stats: { items: Stat[] };
+  performance: {
+    tag: string;
+    title: string;
+    subtitle: string;
+    groups: ShowcaseGroup[];
+  };
   team: { tag: string; title: string; subtitle: string; members: TeamMember[] };
   contact: {
     tag: string;
@@ -66,9 +92,29 @@ const TEAM_IMGS = {
   media: "/img/our_team/lead-media.jpeg",
 };
 
+// Real showcase media (paths + external links are language-independent)
+const SHOW = {
+  dsSpeaker: "/img/performance/Data-Science/speaker-workshop.jpg",
+  dsWorkshop: "/img/performance/Data-Science/workshop.jpg",
+  progWeb: "/img/performance/programming/web.png",
+  vid1: "/img/performance/medic/video-demo-1.mp4",
+  vid2: "/img/performance/medic/video-demo-2.mp4",
+  vid3: "/img/performance/medic/video-demo-3.mp4",
+  tiktok1: "https://www.tiktok.com/@nuolmaker_cs/video/7660453658022235400",
+  tiktok2: "https://www.tiktok.com/@nuolmaker_cs/video/7660459484032126215",
+  tiktok3: "https://www.tiktok.com/@nuolmaker_cs/video/7660449584497298695",
+};
+
 export const content: Record<Lang, Dictionary> = {
   en: {
-    nav: { about: "About", focus: "What We Do", team: "Team", contact: "Contact", cta: "Join Us" },
+    nav: {
+      about: "About",
+      focus: "What We Do",
+      performance: "Performance",
+      team: "Team",
+      contact: "Contact",
+      cta: "Join Us",
+    },
     hero: {
       badge: "Faculty of Natural Sciences · NUOL",
       titleLead: "Where students build the",
@@ -112,6 +158,37 @@ export const content: Record<Lang, Dictionary> = {
         { value: 5, suffix: "", label: "Discipline teams" },
       ],
     },
+    performance: {
+      tag: "Performance",
+      title: "See what our teams create",
+      subtitle: "Real workshops, projects and stories — made by our members.",
+      groups: [
+        {
+          key: "data",
+          label: "Data Science",
+          items: [
+            { type: "image", src: SHOW.dsSpeaker, title: "Guest speaker workshop" },
+            { type: "image", src: SHOW.dsWorkshop, title: "Hands-on data workshop" },
+          ],
+        },
+        {
+          key: "prog",
+          label: "Programming",
+          items: [
+            { type: "image", src: SHOW.progWeb, title: "Club web platform" },
+          ],
+        },
+        {
+          key: "media",
+          label: "Media",
+          items: [
+            { type: "video", src: SHOW.vid1, title: "Web Development branch (CW)", link: SHOW.tiktok1 },
+            { type: "video", src: SHOW.vid2, title: "Programming branch (CPR)", link: SHOW.tiktok2 },
+            { type: "video", src: SHOW.vid3, title: "Computer Science branch", link: SHOW.tiktok3 },
+          ],
+        },
+      ],
+    },
     team: {
       tag: "Our team",
       title: "Meet the people behind the club",
@@ -144,7 +221,14 @@ export const content: Record<Lang, Dictionary> = {
   },
 
   lo: {
-    nav: { about: "ກ່ຽວກັບພວກເຮົາ", focus: "ສິ່ງທີ່ພວກເຮົາເຮັດ", team: "ທີມງານ", contact: "ຕິດຕໍ່", cta: "ເຂົ້າຮ່ວມ" },
+    nav: {
+      about: "ກ່ຽວກັບພວກເຮົາ",
+      focus: "ສິ່ງທີ່ພວກເຮົາເຮັດ",
+      performance: "ຜົນງານ",
+      team: "ທີມງານ",
+      contact: "ຕິດຕໍ່",
+      cta: "ເຂົ້າຮ່ວມ",
+    },
     hero: {
       badge: "ຄະນະວິທະຍາສາດທຳມະຊາດ · ມຊ",
       titleLead: "ບ່ອນທີ່ນັກສຶກສາສ້າງ",
@@ -186,6 +270,37 @@ export const content: Record<Lang, Dictionary> = {
         { value: 30, suffix: "+", label: "ໂຄງການທີ່ສ້າງແລ້ວ" },
         { value: 25, suffix: "+", label: "ກິດຈະກຳ ແລະ ກອງປະຊຸມ" },
         { value: 5, suffix: "", label: "ທີມສາຂາ" },
+      ],
+    },
+    performance: {
+      tag: "ຜົນງານ",
+      title: "ເບິ່ງສິ່ງທີ່ທີມພວກເຮົາສ້າງ",
+      subtitle: "ກອງປະຊຸມ, ໂຄງການ ແລະ ເລື່ອງລາວຕົວຈິງ — ສ້າງໂດຍສະມາຊິກຂອງພວກເຮົາ.",
+      groups: [
+        {
+          key: "data",
+          label: "ວິທະຍາສາດຂໍ້ມູນ",
+          items: [
+            { type: "image", src: SHOW.dsSpeaker, title: "ກອງປະຊຸມກັບວິທະຍາກອນຮັບເຊີນ" },
+            { type: "image", src: SHOW.dsWorkshop, title: "ກອງປະຊຸມຝຶກປະຕິບັດຂໍ້ມູນ" },
+          ],
+        },
+        {
+          key: "prog",
+          label: "ການຂຽນໂປຣແກຣມ",
+          items: [
+            { type: "image", src: SHOW.progWeb, title: "ເວັບໄຊທ໌ຂອງຊົມລົມ" },
+          ],
+        },
+        {
+          key: "media",
+          label: "ສື່",
+          items: [
+            { type: "video", src: SHOW.vid1, title: "ສາຂາການພັດທະນາເວັບໄຊ (CW)", link: SHOW.tiktok1 },
+            { type: "video", src: SHOW.vid2, title: "ສາຂາການພັດທະນາໂປຣແກຣມ (CPR)", link: SHOW.tiktok2 },
+            { type: "video", src: SHOW.vid3, title: "ສາຂາວິທະຍາສາດຄອມພິວເຕີ", link: SHOW.tiktok3 },
+          ],
+        },
       ],
     },
     team: {

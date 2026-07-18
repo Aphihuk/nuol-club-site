@@ -21,6 +21,7 @@ export default function Navbar() {
   const links = [
     { href: "#about", label: t.nav.about },
     { href: "#focus", label: t.nav.focus },
+    { href: "#performance", label: t.nav.performance },
     { href: "#team", label: t.nav.team },
     { href: "#contact", label: t.nav.contact },
   ];
