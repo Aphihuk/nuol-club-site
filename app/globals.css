@@ -1,26 +1,138 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ------------------------------------------------------------------ */
+/*  Theme tokens (Tailwind v4 @theme)                                  */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-bg: #060a16;
+  --color-bg-soft: #0b1224;
+  --color-surface: #111a30;
+  --color-surface-2: #16223d;
+  --color-border: #223154;
+  --color-fg: #e8eefc;
+  --color-muted: #9fb0d0;
+
+  --color-accent: #22d3ee; /* cyan */
+  --color-accent-2: #6366f1; /* indigo */
+  --color-accent-3: #a855f7; /* violet */
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-lao: var(--font-lao), var(--font-inter), sans-serif;
+
+  --shadow-glow: 0 0 0 1px rgba(34, 211, 238, 0.15), 0 20px 60px -20px rgba(99, 102, 241, 0.45);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Offset anchor targets so section titles clear the fixed navbar */
+section[id] {
+  scroll-margin-top: 5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Lao script gets its dedicated face for correct rendering */
+:lang(lo),
+.font-lao {
+  font-family: var(--font-lao);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #04121a;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-2);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reusable utilities                                                 */
+/* ------------------------------------------------------------------ */
+.gradient-text {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-accent),
+    var(--color-accent-2) 55%,
+    var(--color-accent-3)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.glass {
+  background: rgba(17, 26, 48, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--color-border);
+}
+
+/* Animated aurora blobs used in hero / accent bands */
+.aurora {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: float 14s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(30px, -40px, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-25px, 25px, 0) scale(0.95);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Respect reduced-motion: kill decorative loops */
+@media (prefers-reduced-motion: reduce) {
+  .aurora {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
