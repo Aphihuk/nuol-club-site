@@ -5,7 +5,6 @@ import FocusAreas from "@/components/FocusAreas";
 import Stats from "@/components/Stats";
 import Performance from "@/components/Performance";
 import Team from "@/components/Team";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -19,7 +18,6 @@ export default function Home() {
         <Stats />
         <Performance />
         <Team />
-        <Contact />
       </main>
       <Footer />
     </>
