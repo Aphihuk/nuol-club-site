@@ -1,0 +1,10 @@
+services:
+  web:
+    build: .
+    image: nuol-club-site:latest
+    container_name: nuol-club-site
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
