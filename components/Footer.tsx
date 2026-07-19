@@ -4,7 +4,7 @@ import Image from "next/image";
 import { MessageCircle, Send, Music2, Mail } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
-const EMAIL = "fnsclub@nuol.edu.la";
+const EMAIL = "nuolmaker.computerscience@gmail.com";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -40,7 +40,7 @@ export default function Footer() {
               className="h-10 w-10 rounded-full object-cover"
             />
             <span className="text-sm font-semibold">
-              FNS <span className="gradient-text">Club</span>
+              FNS MAKER <span className="gradient-text">Club</span>
             </span>
           </div>
           <p className="mt-4 max-w-xs text-sm text-[var(--color-muted)]">{t.footer.tagline}</p>

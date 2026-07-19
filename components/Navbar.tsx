@@ -45,7 +45,7 @@ export default function Navbar() {
             className="h-10 w-10 rounded-full object-cover ring-1 ring-[var(--color-border)]"
           />
           <span className="hidden text-sm font-semibold tracking-wide sm:block">
-            NUOL MAKER <span className="gradient-text">Club</span>
+            FNS MAKER <span className="gradient-text">Club</span>
           </span>
         </a>
 
