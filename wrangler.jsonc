@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nuol-club-site",
+  "compatibility_date": "2025-07-01",
+  // Static-assets-only Worker: serve the Next.js static export in ./out
+  // (no `main` = no server code, so OpenNext is not involved).
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}
