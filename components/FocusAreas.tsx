@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Cpu,
   Code,
@@ -28,9 +28,32 @@ export default function FocusAreas() {
   const reduce = useReducedMotion();
   const items = t.focus.items;
   const [active, setActive] = useState(Math.floor(items.length / 2));
+  const [paused, setPaused] = useState(false);
+  const dir = useRef(1);
 
   const clamp = (n: number) => Math.max(0, Math.min(items.length - 1, n));
-  const go = (dir: number) => setActive((a) => clamp(a + dir));
+  const go = (d: number) => setActive((a) => clamp(a + d));
+
+  // Auto-advance every 2s, ping-ponging at the ends. Pauses on hover.
+  useEffect(() => {
+    if (reduce || paused || items.length < 2) return;
+    const id = setInterval(() => {
+      setActive((a) => {
+        let d = dir.current;
+        let n = a + d;
+        if (n > items.length - 1) {
+          d = -1;
+          n = a - 1;
+        } else if (n < 0) {
+          d = 1;
+          n = a + 1;
+        }
+        dir.current = d;
+        return n;
+      });
+    }, 2000);
+    return () => clearInterval(id);
+  }, [reduce, paused, items.length]);
 
   const spring = reduce
     ? { duration: 0 }
@@ -62,7 +85,11 @@ export default function FocusAreas() {
         </Reveal>
 
         {/* 3D center-mode carousel */}
-        <div className="relative mx-auto mt-16 h-[430px] w-full max-w-5xl [perspective:1600px]">
+        <div
+          className="relative mx-auto mt-16 h-[430px] w-full max-w-5xl [perspective:1600px]"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
           {items.map((item, i) => {
             const Icon = ICONS[item.icon] ?? Cpu;
             const offset = i - active;
