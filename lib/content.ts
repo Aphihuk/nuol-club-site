@@ -60,6 +60,7 @@ export interface Dictionary {
     vision: { title: string; text: string };
   };
   focus: { tag: string; title: string; subtitle: string; items: FocusArea[] };
+  tech: { tag: string; title: string };
   stats: { items: Stat[] };
   performance: {
     tag: string;
@@ -149,6 +150,10 @@ export const content: Record<Lang, Dictionary> = {
         { icon: "palette", title: "Graphic Design", desc: "Branding, UI and visual identity that make our projects look as good as they work." },
         { icon: "video", title: "Media", desc: "Photography, video and storytelling that share our work with the world." },
       ],
+    },
+    tech: {
+      tag: "Tech stack",
+      title: "Technologies we build with",
     },
     stats: {
       items: [
@@ -263,6 +268,10 @@ export const content: Record<Lang, Dictionary> = {
         { icon: "palette", title: "ອອກແບບກຣາຟິກ", desc: "ແບຣນ, UI ແລະ ອັດຕະລັກ ທີ່ເຮັດໃຫ້ໂຄງການເບິ່ງດີເທົ່າກັບການໃຊ້ງານ." },
         { icon: "video", title: "ສື່", desc: "ການຖ່າຍພາບ, ວິດີໂອ ແລະ ການເລົ່າເລື່ອງ ທີ່ແບ່ງປັນຜົນງານຂອງພວກເຮົາສູ່ໂລກ." },
       ],
+    },
+    tech: {
+      tag: "ເຕັກໂນໂລຊີ",
+      title: "ເຕັກໂນໂລຊີທີ່ພວກເຮົາໃຊ້ສ້າງ",
     },
     stats: {
       items: [

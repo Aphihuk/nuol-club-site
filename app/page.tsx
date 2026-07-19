@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import FocusAreas from "@/components/FocusAreas";
+import TechStack from "@/components/TechStack";
 import Stats from "@/components/Stats";
 import Performance from "@/components/Performance";
 import Team from "@/components/Team";
@@ -15,6 +16,7 @@ export default function Home() {
         <Hero />
         <About />
         <FocusAreas />
+        <TechStack />
         {/* <Stats /> */}
         <Performance />
         <Team />

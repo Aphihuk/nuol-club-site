@@ -237,9 +237,35 @@ p { text-wrap: pretty; }
   }
 }
 
+/* Infinite logo marquee (track holds two copies; shift by half = seamless) */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
 /* Respect reduced-motion: kill decorative loops */
 @media (prefers-reduced-motion: reduce) {
   .aurora {
+    animation: none;
+  }
+  .animate-marquee {
     animation: none;
   }
   html {
