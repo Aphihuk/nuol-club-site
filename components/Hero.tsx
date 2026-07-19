@@ -27,7 +27,7 @@ export default function Hero() {
       className="relative flex min-h-screen items-center overflow-hidden"
     >
       {/* Parallax background image */}
-      <motion.div style={{ y: bgY }} className="absolute inset-0 -z-20">
+      <motion.div style={{ y: bgY }} className="absolute inset-0 -z-0">
         <Image
           src="/img/logo/herobar.jpg"
           alt=""
@@ -35,7 +35,7 @@ export default function Hero() {
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bg)]/80 via-[var(--color-bg)]/85 to-[var(--color-bg)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bg)]/70 via-[var(--color-bg)]/85 to-[var(--color-bg)]/70" />
       </motion.div>
 
       {/* Grid + aurora accents */}

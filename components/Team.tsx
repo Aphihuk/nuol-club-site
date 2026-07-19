@@ -9,7 +9,7 @@ export default function Team() {
 
   return (
     <section id="team" className="relative py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 ">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">{t.team.tag}</span>
           <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">

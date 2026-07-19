@@ -15,7 +15,7 @@ export default function Home() {
         <Hero />
         <About />
         <FocusAreas />
-        <Stats />
+        {/* <Stats /> */}
         <Performance />
         <Team />
       </main>

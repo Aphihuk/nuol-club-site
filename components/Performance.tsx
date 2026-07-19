@@ -138,7 +138,7 @@ export default function Performance() {
           preload="metadata"
           className="h-full w-full object-cover opacity-25"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bg)] via-[var(--color-bg)]/85 to-[var(--color-bg)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bg)] via-[var(--color-bg)]/45 to-[var(--color-bg)]" />
       </div>
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
