@@ -4,7 +4,21 @@ services:
     image: nuol-club-site:latest
     container_name: nuol-club-site
     restart: unless-stopped
-    ports:
-      - "3000:3000"
+    # No published ports: cloudflared reaches the app over the internal
+    # Docker network. Expose (not publish) keeps 3000 off the host firewall.
+    expose:
+      - "3000"
     environment:
       - NODE_ENV=production
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: nuol-cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    # Set TUNNEL_TOKEN in Portainer's stack "Environment variables" section
+    # (or a .env file) — do NOT hardcode the token here.
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    depends_on:
+      - web
