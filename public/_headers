@@ -1,0 +1,24 @@
+# Cloudflare static-asset cache rules (served from ./out)
+
+# Content-hashed build assets — safe to cache forever
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Fonts (hashed) — cache forever
+/_next/static/media/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images — long cache, revalidated by ETag if the file changes on redeploy
+/img/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+# Videos
+/video/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+# HTML — always revalidate so content updates show immediately
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
