@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    image: nuol-club-site:latest
+    container_name: nuol-club-site
+    restart: unless-stopped
+    # Publish the app on host port 3000 → open http://<server-ip>:3000
+    # Change the left number to use a different host port, e.g. "8080:3000".
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
