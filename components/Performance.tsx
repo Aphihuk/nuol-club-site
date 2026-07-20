@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import SmartImage from "@/components/ui/SmartImage";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Play, Pause, Volume2, VolumeX, ExternalLink } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
@@ -13,10 +13,14 @@ function VideoCard({ item }: { item: ShowcaseItem }) {
   const reduce = useReducedMotion();
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const v = ref.current;
-    if (!v || reduce) return;
+    if (!v) return;
+    // Already-buffered video may skip onLoadedData — reveal it on mount.
+    if (v.readyState >= 2) setReady(true);
+    if (reduce) return;
     v.play().then(() => setPlaying(true)).catch(() => {});
   }, [reduce]);
 
@@ -55,7 +59,15 @@ function VideoCard({ item }: { item: ShowcaseItem }) {
           loop
           playsInline
           preload="metadata"
+          onLoadedData={() => setReady(true)}
           className="h-full w-full object-cover"
+        />
+        {/* shimmer skeleton until the first frame is ready */}
+        <span
+          aria-hidden
+          className={`skeleton pointer-events-none absolute inset-0 transition-opacity duration-700 ${
+            ready ? "opacity-0" : "opacity-100"
+          }`}
         />
         {/* readability scrim */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-transparent to-transparent" />
@@ -101,7 +113,7 @@ function ImageCard({ item }: { item: ShowcaseItem }) {
   return (
     <div className="liquid-glass group relative w-full max-w-[520px] overflow-hidden rounded-2xl">
       <div className="relative aspect-[16/10] w-full">
-        <Image
+        <SmartImage
           src={item.src}
           alt={item.title}
           fill

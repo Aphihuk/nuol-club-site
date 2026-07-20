@@ -237,6 +237,77 @@ p { text-wrap: pretty; }
   }
 }
 
+/* ------------------------------------------------------------------ */
+/*  Skeleton loading — shimmer placeholder for images/video           */
+/* ------------------------------------------------------------------ */
+.skeleton {
+  background-color: var(--color-surface);
+  background-image: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.09) 40%,
+    rgba(255, 255, 255, 0.16) 50%,
+    rgba(255, 255, 255, 0.09) 60%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Full-page initial loader (branded splash)                         */
+/* ------------------------------------------------------------------ */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  background: var(--color-bg);
+  transition: opacity 0.55s ease, visibility 0.55s ease;
+}
+.page-loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.page-loader__logo {
+  animation: pulse-soft 1.6s ease-in-out infinite;
+  filter: drop-shadow(0 0 28px rgba(96, 165, 250, 0.35));
+}
+.page-loader__bar {
+  height: 5px;
+  width: 168px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.page-loader__bar > span {
+  display: block;
+  height: 100%;
+  width: 40%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    var(--color-accent),
+    var(--color-accent-2)
+  );
+  animation: loader-slide 1.15s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.72; transform: scale(0.965); }
+}
+@keyframes loader-slide {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(320%); }
+}
+
 /* Infinite logo marquee (track holds two copies; shift by half = seamless) */
 @keyframes marquee {
   from {
@@ -266,6 +337,11 @@ p { text-wrap: pretty; }
     animation: none;
   }
   .animate-marquee {
+    animation: none;
+  }
+  .skeleton,
+  .page-loader__logo,
+  .page-loader__bar > span {
     animation: none;
   }
   html {

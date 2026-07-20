@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import SmartImage from "@/components/ui/SmartImage";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { useLanguage } from "@/lib/LanguageContext";
 
@@ -26,7 +26,7 @@ export default function Team() {
             <RevealItem key={i}>
               <div className="liquid-glass group relative overflow-hidden rounded-2xl">
                 <div className="relative aspect-[3/4] overflow-hidden">
-                  <Image
+                  <SmartImage
                     src={m.img}
                     alt={m.name}
                     fill

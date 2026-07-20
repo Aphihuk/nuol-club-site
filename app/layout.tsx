@@ -3,6 +3,7 @@ import { Inter, Noto_Sans_Lao } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import SmoothScroll from "@/components/ui/SmoothScroll";
+import PageLoader from "@/components/ui/PageLoader";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${notoLao.variable}`}>
       <body className="min-h-screen antialiased">
+        <PageLoader />
         <LanguageProvider>
           <SmoothScroll>{children}</SmoothScroll>
         </LanguageProvider>
