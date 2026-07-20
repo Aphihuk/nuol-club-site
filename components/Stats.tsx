@@ -18,8 +18,8 @@ export default function Stats() {
             stagger={0.1}
             className="relative grid grid-cols-2 gap-8 text-center lg:grid-cols-4"
           >
-            {t.stats.items.map((s) => (
-              <RevealItem key={s.label}>
+            {t.stats.items.map((s, i) => (
+              <RevealItem key={i}>
                 <div className="text-4xl font-bold tracking-tight sm:text-5xl">
                   <span className="gradient-text">
                     <Counter value={s.value} suffix={s.suffix} />

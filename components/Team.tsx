@@ -22,8 +22,8 @@ export default function Team() {
           stagger={0.08}
           className="mt-14 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4"
         >
-          {t.team.members.map((m) => (
-            <RevealItem key={m.role}>
+          {t.team.members.map((m, i) => (
+            <RevealItem key={i}>
               <div className="liquid-glass group relative overflow-hidden rounded-2xl">
                 <div className="relative aspect-[3/4] overflow-hidden">
                   <Image
