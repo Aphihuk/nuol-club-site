@@ -331,7 +331,52 @@ p { text-wrap: pretty; }
   mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
 }
 
-/* Respect reduced-motion: kill decorative loops */
+/* ------------------------------------------------------------------ */
+/*  About faculty emblem — 3D floating badge over a moving aurora      */
+/* ------------------------------------------------------------------ */
+.emblem-stage {
+  perspective: 1400px;
+}
+/* Light "medallion" plate behind the seal: separates the two layers by
+   BRIGHTNESS (light plate vs dark card) so the blue seal reads clearly —
+   no more blue-on-blue. Sits below the emblem for a 3D stacked look. */
+.emblem-plate {
+  position: absolute;
+  inset: 6%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 36%,
+    rgba(247, 250, 255, 0.97),
+    rgba(222, 232, 248, 0.9) 55%,
+    rgba(188, 205, 234, 0.7) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow:
+    inset 0 3px 4px rgba(255, 255, 255, 0.9),
+    inset 0 -14px 26px rgba(120, 142, 184, 0.45),
+    0 30px 46px -16px rgba(2, 10, 40, 0.9);
+  transform: translateZ(-8px);
+}
+.emblem-card {
+  transform-style: preserve-3d;
+}
+/* 3D float — tilt driven live by JS (mouse on desktop, gyroscope on mobile)
+   via the --erx/--ery/--ey custom props. Defaults give a resting 3D angle
+   so it still looks dimensional before/without any input (or reduced-motion). */
+.emblem-float {
+  transform-style: preserve-3d;
+  transform: translateY(var(--ey, 0px)) rotateX(var(--erx, 0deg))
+    rotateY(var(--ery, -6deg));
+  will-change: transform;
+}
+/* Deep neutral shadow lifts the emblem off the plate (no blue haze) */
+.emblem-logo {
+  transform: translateZ(60px);
+  filter: drop-shadow(0 20px 24px rgba(2, 10, 40, 0.55));
+}
+
+/* Respect reduced-motion: kill decorative loops (JS tilt also self-disables) */
 @media (prefers-reduced-motion: reduce) {
   .aurora {
     animation: none;

@@ -96,10 +96,19 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.65 }}
           className="mt-9 flex flex-wrap items-center gap-4"
         >
+          {/* use play kahoot */}
           <a
-            href="#contact"
+            href="https://kahoot.it/?pin=294212&refer_method=link"
             className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-2)] px-6 py-3 text-sm font-semibold text-[#04121a] transition-transform hover:scale-105"
           >
+            
+            {/* ໄຊ້ເເທ້ ເເມ່ນ line 107-110 */}
+
+            {/* <a
+            href="#contact"
+            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-2)] px-6 py-3 text-sm font-semibold text-[#04121a] transition-transform hover:scale-105"
+          > */}
+            
             {t.hero.ctaPrimary}
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </a>

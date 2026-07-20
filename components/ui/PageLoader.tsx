@@ -49,12 +49,12 @@ export default function PageLoader() {
       aria-live="polite"
     >
       <Image
-        src="/img/logo/logo-culb.png"
+        src="/img/logo/logo-culb-light.png"
         alt="FNS MAKER Club"
-        width={96}
-        height={96}
+        width={264}
+        height={120}
         priority
-        className="page-loader__logo h-24 w-24 object-contain"
+        className="page-loader__logo h-20 w-auto object-contain sm:h-24"
       />
       <div className="page-loader__bar">
         <span />

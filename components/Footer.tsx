@@ -33,15 +33,12 @@ export default function Footer() {
         <div className="lg:col-span-1">
           <div className="flex items-center gap-3">
             <Image
-              src="/img/logo/logo-culb.png"
-              alt="Club logo"
-              width={40}
-              height={40}
-              className="h-10 w-10 rounded-full object-cover"
+              src="/img/logo/logo-culb-light.png"
+              alt="FNS MAKER Club"
+              width={176}
+              height={80}
+              className="h-10 w-auto object-contain"
             />
-            <span className="text-sm font-semibold">
-              FNS MAKER <span className="gradient-text">Club</span>
-            </span>
           </div>
           <p className="mt-4 max-w-xs text-sm text-[var(--color-muted)]">{t.footer.tagline}</p>
         </div>

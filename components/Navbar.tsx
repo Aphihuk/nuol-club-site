@@ -38,15 +38,13 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
         <a href="#home" className="flex items-center gap-3">
           <Image
-            src="/img/logo/logo-culb.png"
-            alt="Club logo"
-            width={44}
-            height={44}
-            className="h-10 w-10 rounded-full object-cover ring-1 ring-[var(--color-border)]"
+            src="/img/logo/logo-culb-light.png"
+            alt="FNS MAKER Club"
+            width={176}
+            height={80}
+            priority
+            className="h-8 w-auto object-contain sm:h-9"
           />
-          <span className="hidden text-sm font-semibold tracking-wide sm:block">
-            FNS MAKER <span className="gradient-text">Club</span>
-          </span>
         </a>
 
         {/* Desktop links */}
