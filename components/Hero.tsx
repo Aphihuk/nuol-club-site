@@ -98,7 +98,7 @@ export default function Hero() {
         >
           {/* use play kahoot */}
           <a
-            href="https://kahoot.it/?pin=294212&refer_method=link"
+            href="https://kahoot.it/?pin=90108&refer_method=link"
             className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-2)] px-6 py-3 text-sm font-semibold text-[#04121a] transition-transform hover:scale-105"
           >
             
